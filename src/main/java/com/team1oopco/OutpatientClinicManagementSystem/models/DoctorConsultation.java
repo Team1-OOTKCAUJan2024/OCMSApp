@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,19 +26,24 @@ public class DoctorConsultation extends Consultation {
 	public String diagnosis;
 	public String labTests;
 	public String doctorNotes;
+	public Integer consultationfee;
 	
-	/*@OneToOne(mappedBy="doctorConsultation")
-	private List<Pharmacy> pharmacies;*/
+	@OneToOne
+	@JoinColumn(name="appointmentid", insertable=false, updatable=false)
+	private Appointment appointment;
+	private Integer appointmentid;
 	
 	public DoctorConsultation(Integer consultationid, String consultationRoom, String status, String timestamp,
-			Personnel personnel, int personnelid, String medicalHistory,
-			String diagnosis, String labTests, String doctorNotes) {
-		//super(consultationid, consultationRoom, status, timestamp, personnel, personnelid, appointment, appointmentid);
+			Personnel personnel, int personnelid, String medicalHistory, Integer consultationfee,
+			String diagnosis, String labTests, String doctorNotes, Appointment appointment, Integer appointmentid) {
+		
 		this.medicalHistory = medicalHistory;
 		this.diagnosis = diagnosis;
 		this.labTests = labTests;
 		this.doctorNotes = doctorNotes;
-		//this.pharmacies = pharmacies;
+		this.consultationfee = consultationfee;
+		this.appointment = appointment;
+		this.appointmentid = appointmentid;
 	}
 
 	public DoctorConsultation(Integer consultationid, String consultationRoom, String status, String timestamp,
@@ -75,19 +81,36 @@ public class DoctorConsultation extends Consultation {
 	public void setDoctorNotes(String doctorNotes) {
 		this.doctorNotes = doctorNotes;
 	}
+	
 
-	/*public List<Pharmacy> getPharmacies() {
-		return pharmacies;
+	public Integer getConsultationfee() {
+		return consultationfee;
 	}
 
-	public void setPharmacies(List<Pharmacy> pharmacies) {
-		this.pharmacies = pharmacies;
-	}*/
+	public void setConsultationfee(Integer consultationfee) {
+		this.consultationfee = consultationfee;
+	}
+
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
+	public Integer getAppointmentid() {
+		return appointmentid;
+	}
+
+	public void setAppointmentid(Integer appointmentid) {
+		this.appointmentid = appointmentid;
+	}
 
 	@Override
 	public String toString() {
 		return "DoctorConsultation [medicalHistory=" + medicalHistory + ", diagnosis=" + diagnosis + ", labTests="
-				+ labTests + ", doctorNotes=" + doctorNotes + "]";
+				+ labTests + ", doctorNotes=" + doctorNotes + ", consultationfee=" + consultationfee + ", appointment=" + appointment + ", appointmentid=" + appointmentid + "]";
 	}
 	
 	

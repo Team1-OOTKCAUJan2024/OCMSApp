@@ -32,18 +32,20 @@ public class Prescription {
 	public String medicine;
 	private Integer quantity;
 	private Float unitprice;
+	private String status;
 	
 	@ManyToOne
 	@JoinColumn(name="pharmacyid", insertable=false, updatable=false)
     private Pharmacy pharmacy;
     private Integer pharmacyid;
     
-	public Prescription(Integer prescriptionid, String medicine, Integer quantity, Float unitprice, Pharmacy pharmacy,
+	public Prescription(Integer prescriptionid, String medicine, Integer quantity, Float unitprice, String status, Pharmacy pharmacy,
 			Integer pharmacyid) {
 		this.prescriptionid = prescriptionid;
 		this.medicine = medicine;
 		this.quantity = quantity;
 		this.unitprice = unitprice;
+		this.status = status;
 		this.pharmacy = pharmacy;
 		this.pharmacyid = pharmacyid;
 	}
@@ -83,6 +85,14 @@ public class Prescription {
 		this.unitprice = unitprice;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Pharmacy getPharmacy() {
 		return pharmacy;
 	}
@@ -102,7 +112,7 @@ public class Prescription {
 	@Override
 	public String toString() {
 		return "Prescription [prescriptionid=" + prescriptionid + ", medicine=" + medicine + ", quantity=" + quantity
-				+ ", unitprice=" + unitprice + ", pharmacy=" + pharmacy + ", pharmacyid=" + pharmacyid + "]";
+				+ ", unitprice=" + unitprice + ", status=" + status + ", pharmacy=" + pharmacy + ", pharmacyid=" + pharmacyid + "]";
 	}
      
     

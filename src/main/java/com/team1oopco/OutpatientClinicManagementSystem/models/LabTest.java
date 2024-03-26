@@ -33,19 +33,21 @@ public class LabTest {
 	private String sample;
 	private String results;
 	private Float testprice;
+	private String status;
 	
 	@ManyToOne
 	@JoinColumn(name="labno", insertable=false, updatable=false)
     private Laboratory laboratory;
     private Integer labno;
     
-	public LabTest(Integer labtestno, String testName, String sample, String results, Float testprice, Laboratory laboratory,
+	public LabTest(Integer labtestno, String testName, String sample, String results, Float testprice, String status, Laboratory laboratory,
 			Integer labno) {
 		this.labtestno = labtestno;
 		this.testName = testName;
 		this.sample = sample;
 		this.results = results;
 		this.testprice = testprice;
+		this.status = status;
 		this.laboratory = laboratory;
 		this.labno = labno;
 	}
@@ -93,6 +95,14 @@ public class LabTest {
 		this.testprice = testprice;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Laboratory getLaboratory() {
 		return laboratory;
 	}
@@ -112,7 +122,7 @@ public class LabTest {
 	@Override
 	public String toString() {
 		return "LabTest [labtestno=" + labtestno + ", testName=" + testName + ", sample=" + sample
-				+ ", results=" + results + ", testprice=" + testprice + ", laboratory=" + laboratory + ", labno=" + labno + "]";
+				+ ", results=" + results + ", testprice=" + testprice + ", status=" + status + ", laboratory=" + laboratory + ", labno=" + labno + "]";
 	}
      
     

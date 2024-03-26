@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,6 +39,11 @@ public class Billing {
     @JoinColumn(name="patientno", insertable=false, updatable=false)
     private Patient patient;
     private Integer patientno;
+    
+    @OneToOne
+    @JoinColumn(name="consultationid", insertable=false, updatable=false)
+    private DoctorConsultation doctorConsultation;
+    private Integer consultationid;
 
     // Constructor
     /*public Billing(Personnel personnel, String invoiceNo, String invoiceDate, int amount, String status, Patient patient) {
