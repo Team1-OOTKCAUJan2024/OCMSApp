@@ -31,7 +31,7 @@ public class AdminStaff extends Personnel {
 		//this.appointments = appointments;
 	}
 	
-	public AdminStaff(int personnelid, String personnelName, String address, int telephone) {
+	public AdminStaff() {
 	}
 
 	public String getDepartment() {
