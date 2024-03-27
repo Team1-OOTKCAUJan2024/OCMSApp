@@ -31,7 +31,7 @@ public class PatientController {
 		return "patient";
 	}
 	
-	@PostMapping("/patients/addNew")
+	@PostMapping("patients/addNew")
 	public String addNew(Patient patient) {
 		
 		patientService.save(patient);
@@ -46,10 +46,18 @@ public class PatientController {
 		return patientService.findById(patientno);
 	}
 	
-	@RequestMapping(value="/patients/update", method= {RequestMethod.PUT, RequestMethod.GET})
+	@RequestMapping(value="patients/update", method= {RequestMethod.PUT, RequestMethod.GET})
 	public String update(Patient patient) {
 		
 		patientService.save(patient);
+		
+		return "redirect:/patients";
+	}
+	
+	@RequestMapping(value="patients/delete", method= {RequestMethod.DELETE, RequestMethod.GET})
+	public String delete(Integer patientno) {
+		
+		patientService.delete(patientno);
 		
 		return "redirect:/patients";
 	}

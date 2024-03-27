@@ -25,6 +25,10 @@ public class PatientService {
 		patientRepository.save(patient);
 	}
 	
+	public void delete(Integer patientno) {
+		patientRepository.deleteById(patientno);
+	}
+	
 	//get by patient number
 	public Optional<Patient> findById(Integer patientno) {
 		return patientRepository.findById(patientno);
