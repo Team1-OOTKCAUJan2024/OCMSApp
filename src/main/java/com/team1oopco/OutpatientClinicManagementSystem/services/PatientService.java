@@ -1,6 +1,7 @@
 package com.team1oopco.OutpatientClinicManagementSystem.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,10 @@ public class PatientService {
 	//saving new patient
 	public void save(Patient patient) {
 		patientRepository.save(patient);
+	}
+	
+	//get by patient number
+	public Optional<Patient> findById(Integer patientno) {
+		return patientRepository.findById(patientno);
 	}
 }

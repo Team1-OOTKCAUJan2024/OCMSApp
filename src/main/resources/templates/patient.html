@@ -531,6 +531,7 @@
 	              <table class="table datatable">
 	                <thead>
 	                  <tr>
+						<!--<th>Actions</th>-->
 	                    <th>
 	                      <b>P</b>atient No.
 	                    </th>
@@ -544,6 +545,12 @@
 	                </thead>
 	                <tbody>
 	                  <tr th:each="patient:${patients}">
+						<!--<td>
+							<div class="btn-group" role="group" aria-label="Basic outlined example">
+				                <<a type="button" class="btn btn-outline-primary">Delete</a>
+				                <a th:href="@{/patients/findById(patientno=${patient.patientno})}" class="btn btn-outline-primary" id="editButton">Edit</a>
+				             </div>
+						</td>-->
 	                    <td th:text="${patient.patientno}"></td>
 	                    <td th:text="${patient.patientName}"></td>
 	                    <td th:text="${patient.gender}"></td>
@@ -580,11 +587,11 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Patient Registration</h5>
+          <h5 class="modal-title" id="addModalLabel">Patient Registration</h5>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -640,6 +647,72 @@
     </div>
   </div>
   
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Update Patient</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+  			<!-- Floating Labels Form -->
+  	          <form class="row g-3" th:action="@{/patients/update}" method="put">
+				<div class="col-md-12">
+  	              <div class="form-floating">
+  	                <input type="text" class="form-control" id="patientNumberEdit" placeholder="Patient Number" name="patientno" readonly>
+  	                <label for="patientNumberEdit">Patient Number</label>
+  	              </div>
+  	            </div>
+				<div class="col-md-12">
+  	              <div class="form-floating">
+  	                <input type="text" class="form-control" id="patientNameEdit" placeholder="Patient Name" name="patientName">
+  	                <label for="patientNameEdit">Patient Name</label>
+  	              </div>
+  	            </div>
+  				<div class="col-md-6">
+  	              <div class="form-floating mb-3">
+  	                <select class="form-select" id="selectGenderEdit" aria-label="Gender" name="gender">
+  	                  <option selected> </option>
+  	                  <option value="Male">Male</option>
+  	                  <option value="Female">Female</option>
+  					  <option value="Other">Other</option>
+  	                </select>
+  	                <label for="selectGenderEdit">Gender</label>
+  	              </div>
+  	            </div>
+  	            <div class="col-md-6">
+  	              <div class="form-floating">
+  	                <input type="number" class="form-control" id="ageEdit" placeholder="Age" name="age">
+  	                <label for="ageEdit">Age</label>
+  	              </div>
+  	            </div>
+  	            <div class="col-12">
+  	              <div class="form-floating">
+  	                <textarea class="form-control" placeholder="Address" id="addressEdit" style="height: 100px;" name="address"></textarea>
+  	                <label for="addressEdit">Address</label>
+  	              </div>
+  	            </div>
+  				<div class="col-md-12">
+  	              <div class="form-floating">
+  	                <input type="text" class="form-control" id="nokEdit" placeholder="Next of Kin" name="nok">
+  	                <label for="nokEdit">Next of Kin</label>
+  	              </div>
+  	            </div>
+  	            <div class="text-center">
+  	              <button type="submit" class="btn btn-primary">Save</button>
+  	              <button type="reset" class="btn btn-secondary">Reset</button>
+  	            </div>
+  	          </form><!-- End floating Labels Form -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -652,6 +725,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script type="text/javascript" src="../static/assets/js/patient.js" th:src="@{/assets/js/patient.js}"></script>
+  <!--<script src="assets/js/patient.js"></script>-->
 
 </body>
 
