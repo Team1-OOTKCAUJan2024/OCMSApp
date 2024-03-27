@@ -513,37 +513,54 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Pages</li>
-          <li class="breadcrumb-item active">Blank</li>
+          <li class="breadcrumb-item">Out-Patient</li>
+          <li class="breadcrumb-item active">Patient Management</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-6">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Example Card</h5>
-              <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-lg-6">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Example Card</h5>
-              <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+	<section class="section">
+	      <div class="row">
+	        <div class="col-lg-12">
+	
+	          <div class="card">
+	            <div class="card-body">
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">New Patient</button>
+					
+	              <!-- Table with stripped rows -->
+	              <table class="table datatable">
+	                <thead>
+	                  <tr>
+	                    <th>
+	                      <b>P</b>atient No.
+	                    </th>
+	                    <th>Patient Name</th>
+	                    <th>Gender</th>
+						<th>Age</th>
+						<th>Address</th>
+	                    <!--<th data-type="date" data-format="YYYY/DD/MM">Start Date</th>-->
+	                    <th>Next of Kin</th>
+	                  </tr>
+	                </thead>
+	                <tbody>
+	                  <tr th:each="patient:${patients}">
+	                    <td th:text="${patient.patientno}"></td>
+	                    <td th:text="${patient.patientName}"></td>
+	                    <td th:text="${patient.gender}"></td>
+	                    <td th:text="${patient.age}"></td>
+	                    <td th:text="${patient.address}"></td>
+						<td th:text="${patient.nok}"></td>
+	                  </tr>
+		  			</tbody>
+		           </table>
+		           <!-- End Table with stripped rows -->
+		  
+		        </div>
+		       </div>
+		  
+		      </div>
+		     </div>
+		</section>
 
   </main><!-- End #main -->
 
@@ -563,6 +580,66 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Patient Registration</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+			<!-- Floating Labels Form -->
+	          <form class="row g-3" th:action="@{/patients/addNew}" method="post">
+	            <div class="col-md-12">
+	              <div class="form-floating">
+	                <input type="text" class="form-control" id="floatingName" placeholder="Patient Name" name="patientName">
+	                <label for="floatingName">Patient Name</label>
+	              </div>
+	            </div>
+				<div class="col-md-6">
+	              <div class="form-floating mb-3">
+	                <select class="form-select" id="floatingSelectGender" aria-label="Gender" name="gender">
+	                  <option selected> </option>
+	                  <option value="Male">Male</option>
+	                  <option value="Female">Female</option>
+					  <option value="Other">Other</option>
+	                </select>
+	                <label for="floatingSelectGender">Gender</label>
+	              </div>
+	            </div>
+	            <div class="col-md-6">
+	              <div class="form-floating">
+	                <input type="number" class="form-control" id="floatingAge" placeholder="Age" name="age">
+	                <label for="floatingAge">Age</label>
+	              </div>
+	            </div>
+	            <div class="col-12">
+	              <div class="form-floating">
+	                <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;" name="address"></textarea>
+	                <label for="floatingTextarea">Address</label>
+	              </div>
+	            </div>
+				<div class="col-md-12">
+	              <div class="form-floating">
+	                <input type="text" class="form-control" id="floatingNOK" placeholder="Next of Kin" name="nok">
+	                <label for="floatingNOK">Next of Kin</label>
+	              </div>
+	            </div>
+	            <div class="text-center">
+	              <button type="submit" class="btn btn-primary">Save</button>
+	              <button type="reset" class="btn btn-secondary">Reset</button>
+	            </div>
+	          </form><!-- End floating Labels Form -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
