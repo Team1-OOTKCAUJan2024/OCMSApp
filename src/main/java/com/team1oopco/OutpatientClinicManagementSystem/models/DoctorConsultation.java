@@ -24,7 +24,8 @@ import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 public class DoctorConsultation extends Consultation {
 	public String medicalHistory;
 	public String diagnosis;
-	public String labTests;
+	public String[] labTests;
+	public String[] prescriptions;
 	public String doctorNotes;
 	public Integer consultationfee;
 	
@@ -35,11 +36,12 @@ public class DoctorConsultation extends Consultation {
 	
 	public DoctorConsultation(Integer consultationid, String consultationRoom, String status, String timestamp,
 			Personnel personnel, int personnelid, String medicalHistory, Integer consultationfee,
-			String diagnosis, String labTests, String doctorNotes, Appointment appointment, Integer appointmentid) {
+			String diagnosis, String[] labTests, String[] prescriptions, String doctorNotes, Appointment appointment, Integer appointmentid) {
 		
 		this.medicalHistory = medicalHistory;
 		this.diagnosis = diagnosis;
 		this.labTests = labTests;
+		this.prescriptions = prescriptions;
 		this.doctorNotes = doctorNotes;
 		this.consultationfee = consultationfee;
 		this.appointment = appointment;
@@ -66,12 +68,21 @@ public class DoctorConsultation extends Consultation {
 		this.diagnosis = diagnosis;
 	}
 
-	public String getLabTests() {
+	public String[] getLabTests() {
 		return labTests;
 	}
 
-	public void setLabTests(String labTests) {
+	public void setLabTests(String[] labTests) {
 		this.labTests = labTests;
+	}
+	
+
+	public String[] getPrescriptions() {
+		return prescriptions;
+	}
+
+	public void setPrescriptions(String[] prescriptions) {
+		this.prescriptions = prescriptions;
 	}
 
 	public String getDoctorNotes() {
@@ -110,7 +121,7 @@ public class DoctorConsultation extends Consultation {
 	@Override
 	public String toString() {
 		return "DoctorConsultation [medicalHistory=" + medicalHistory + ", diagnosis=" + diagnosis + ", labTests="
-				+ labTests + ", doctorNotes=" + doctorNotes + ", consultationfee=" + consultationfee + ", appointment=" + appointment + ", appointmentid=" + appointmentid + "]";
+				+ labTests + ", prescriptions=" + prescriptions + ", doctorNotes=" + doctorNotes + ", consultationfee=" + consultationfee + ", appointment=" + appointment + ", appointmentid=" + appointmentid + "]";
 	}
 	
 	
