@@ -223,7 +223,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Clients <span>| Today</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                  <h5 class="card-title">Clients <span>| This Month</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -294,7 +294,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+                  <h5 class="card-title">Clients <span>| This Year</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -339,15 +339,16 @@
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
+						 name: 'Customers',
+						  data: [15, 11, 32, 18, 9, 24, 11]
+						  }, {
                           name: 'Revenue',
                           data: [11, 32, 45, 32, 34, 52, 41]
                         }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
+						  name: 'Sales',
+						  data: [31, 40, 28, 51, 42, 82, 56],
+						 }, 
+						],
                         chart: {
                           height: 350,
                           type: 'area',
@@ -418,9 +419,9 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Patient</th>
+                        <th scope="col">Stage</th>
+                        <th scope="col">Charges</th>
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
@@ -428,37 +429,37 @@
                       <tr>
                         <th scope="row"><a href="#">#2457</a></th>
                         <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                        <td><a href="#" class="text-primary">Triage</a></td>
                         <td>$64</td>
                         <td><span class="badge bg-success">Approved</span></td>
                       </tr>
                       <tr>
                         <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
+                        <td>John Kessler</td>
+                        <td><a href="#" class="text-primary">Laboratory</a></td>
                         <td>$47</td>
                         <td><span class="badge bg-warning">Pending</span></td>
                       </tr>
                       <tr>
                         <th scope="row"><a href="#">#2049</a></th>
                         <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
+                        <td><a href="#" class="text-primary">Laboratory</a></td>
                         <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
+                        <td><span class="badge bg-success">Pending</span></td>
                       </tr>
                       <tr>
                         <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+                        <td>Mwangi Kamau</td>
+                        <td><a href="#" class="text-primar">Pharmacy</a></td>
                         <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
+                        <td><span class="badge bg-danger">Awaiting Medicine</span></td>
                       </tr>
                       <tr>
                         <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
+                        <td>Raheem Sterling</td>
+                        <td><a href="#" class="text-primary">Consultation</a></td>
                         <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
+                        <td><span class="badge bg-success">Pending</span></td>
                       </tr>
                     </tbody>
                   </table>
