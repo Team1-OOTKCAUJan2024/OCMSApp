@@ -209,16 +209,16 @@
 	          <div class="card">
 	            <div class="card-body">
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">New Consultation</button>
-					
+				<div class="table-responsive">	
 	              <!-- Table with stripped rows -->
 	              <table class="table datatable">
 	                <thead>
 	                  <tr>
 						<th> </th>
 	                    <th>
-	                      <b>C</b>onsultation No.
+	                      <b>I</b>d
 	                    </th>
-						<th>Appointment No.</th>
+						<th>Appt No.</th>
 	                    <th>Medical History</th>
 	                    <th>Doctor Notes</th>
 						<th>Diagnosis</th>
@@ -246,7 +246,7 @@
 		  			</tbody>
 		           </table>
 		           <!-- End Table with stripped rows -->
-		  
+		  		</div>
 		        </div>
 		       </div>
 		  
@@ -283,7 +283,7 @@
         </div>
         <div class="modal-body">
 			<!-- Floating Labels Form -->
-	          <form class="row g-3" th:action="@{/triage/addNew}" method="post">
+	          <form class="row g-3" th:action="@{/consultations/addNew}" method="post">
 	            <div class="col-md-12">
 				<div class="form-floating mb-3">
 	                <select class="form-select" id="selectAppointmentNumber" aria-label="Appointment Number" name="appointmentid">
@@ -388,7 +388,7 @@
           </div>
           <div class="modal-body">
   			<!-- Floating Labels Form -->
-  	          <form class="row g-3" th:action="@{/patients/update}" method="put">
+  	          <form class="row g-3" th:action="@{/consultations/update}" method="put">
 				<div class="col-md-12">
   	              <div class="form-floating">
   	                <input type="text" class="form-control" id="patientNumberEdit" placeholder="Patient Number" name="patientno" readonly>
