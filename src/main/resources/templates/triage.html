@@ -120,12 +120,12 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a 	th:href="@{/prescriptions}">
+            <a 	th:href="@{/pharmacy}">
               <i class="bi bi-circle"></i><span>Medication Request</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/pharmacy}">
+            <a th:href="@{/prescriptions}">
               <i class="bi bi-circle"></i><span>Prescriptions</span>
             </a>
           </li>
@@ -138,12 +138,12 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/labTests}">
+            <a th:href="@{/laboratory}">
               <i class="bi bi-circle"></i><span>Lab Test Request</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/laboratory}">
+            <a th:href="@{/labTests}">
               <i class="bi bi-circle"></i><span>Lab Tests</span>
             </a>
           </li>
@@ -155,11 +155,11 @@
           <i class="bi bi-bar-chart"></i><span>Billing</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
+          <!--<li>
             <a href="charts-chartjs.html">
               <i class="bi bi-circle"></i><span>Pending Invoices</span>
             </a>
-          </li>
+          </li>-->
           <li>
             <a th:href="@{/billing}">
               <i class="bi bi-circle"></i><span>Invoice List</span>
@@ -284,7 +284,7 @@
 	          <form class="row g-3" th:action="@{/triage/addNew}" method="post">
 	            <div class="col-md-12">
 				<div class="form-floating mb-3">
-	                <select class="form-select" id="selectAppointmentNumber" aria-label="Appointment Number" name="appointmentid">
+	                <select required class="form-select" id="selectAppointmentNumber" aria-label="Appointment Number" name="appointmentid">
 	                  <option selected> </option>
 	                  <option th:each="appointment: ${appointments}"
 					  		th:value="${appointment.appointmentid}"
