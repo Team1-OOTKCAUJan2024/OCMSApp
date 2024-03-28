@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "consultationid")
 public class Triage extends Consultation {
 	
-	public String[] vitals;
+	public String vitals;
 	public String symptoms;
 	
 	@OneToOne
@@ -31,7 +31,7 @@ public class Triage extends Consultation {
 	private Integer appointmentid;
 	
 	public Triage(Integer consultationid, String consultationRoom, String status, String timestamp,
-			MedicalStaff medicalstaff, int personnelid, String[] vitals, String symptoms,
+			MedicalStaff medicalstaff, int personnelid, String vitals, String symptoms,
 			Appointment appointment, Integer appointmentid) {
 		this.vitals = vitals;
 		this.symptoms = symptoms;
@@ -39,15 +39,14 @@ public class Triage extends Consultation {
 		this.appointmentid = appointmentid;
 	}
 
-	public Triage(Integer consultationid, String consultationRoom, String status, String timestamp,
-			MedicalStaff medicalstaff, int personnelid) {
+	public Triage() {
 	}
 
-	public String[] getVitals() {
+	public String getVitals() {
 		return vitals;
 	}
 
-	public void setVitals(String[] vitals) {
+	public void setVitals(String vitals) {
 		this.vitals = vitals;
 	}
 
@@ -78,7 +77,7 @@ public class Triage extends Consultation {
 	
 	@Override
 	public String toString() {
-		return "Triage [vitals=" + Arrays.toString(vitals) + ", symptoms=" + symptoms + ", appointment=" + appointment + ", appointmentid=" + appointmentid+ "]";
+		return "Triage [vitals=" + vitals + ", symptoms=" + symptoms + ", appointment=" + appointment + ", appointmentid=" + appointmentid+ "]";
 	}
 
 	/*public void sendToDoctor() {

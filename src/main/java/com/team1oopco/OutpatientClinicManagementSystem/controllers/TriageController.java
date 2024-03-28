@@ -24,7 +24,11 @@ public class TriageController {
 	
 	@Autowired
 	private TriageService triageService;
+	
+	@Autowired
 	private AppointmentService appointmentService;
+	
+	@Autowired
 	private MedicalStaffService medicalStaffService;
 	
 	@GetMapping("/triage")
@@ -47,7 +51,7 @@ public class TriageController {
 		
 		triageService.save(triage);
 		
-		return "redirect:/triages";
+		return "redirect:/triage";
 	}
 	
 	@RequestMapping("triage/findById")
@@ -62,14 +66,14 @@ public class TriageController {
 		
 		triageService.save(triage);
 		
-		return "redirect:/triages";
+		return "redirect:/triage";
 	}
 	
 	@RequestMapping(value="triage/delete", method= {RequestMethod.DELETE, RequestMethod.GET})
-	public String delete(Integer triageno) {
+	public String delete(Integer consultationid) {
 		
-		triageService.delete(triageno);
+		triageService.delete(consultationid);
 		
-		return "redirect:/triages";
+		return "redirect:/triage";
 	}
 }

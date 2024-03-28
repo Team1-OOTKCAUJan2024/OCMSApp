@@ -24,8 +24,8 @@ import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 public class DoctorConsultation extends Consultation {
 	public String medicalHistory;
 	public String diagnosis;
-	public String[] labTests;
-	public String[] prescriptions;
+	public String labTests;
+	public String prescriptions;
 	public String doctorNotes;
 	public Integer consultationfee;
 	
@@ -36,7 +36,7 @@ public class DoctorConsultation extends Consultation {
 	
 	public DoctorConsultation(Integer consultationid, String consultationRoom, String status, String timestamp,
 			Personnel personnel, int personnelid, String medicalHistory, Integer consultationfee,
-			String diagnosis, String[] labTests, String[] prescriptions, String doctorNotes, Appointment appointment, Integer appointmentid) {
+			String diagnosis, String labTests, String prescriptions, String doctorNotes, Appointment appointment, Integer appointmentid) {
 		
 		this.medicalHistory = medicalHistory;
 		this.diagnosis = diagnosis;
@@ -48,8 +48,7 @@ public class DoctorConsultation extends Consultation {
 		this.appointmentid = appointmentid;
 	}
 
-	public DoctorConsultation(Integer consultationid, String consultationRoom, String status, String timestamp,
-			Personnel personnel, int personnelid) {
+	public DoctorConsultation() {
 	}
 
 	public String getMedicalHistory() {
@@ -68,20 +67,20 @@ public class DoctorConsultation extends Consultation {
 		this.diagnosis = diagnosis;
 	}
 
-	public String[] getLabTests() {
+	public String getLabTests() {
 		return labTests;
 	}
 
-	public void setLabTests(String[] labTests) {
+	public void setLabTests(String labTests) {
 		this.labTests = labTests;
 	}
 	
 
-	public String[] getPrescriptions() {
+	public String getPrescriptions() {
 		return prescriptions;
 	}
 
-	public void setPrescriptions(String[] prescriptions) {
+	public void setPrescriptions(String prescriptions) {
 		this.prescriptions = prescriptions;
 	}
 

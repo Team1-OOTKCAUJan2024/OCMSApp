@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Triage</title>
+  <title>Consultation</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -192,12 +192,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Triage</h1>
+      <h1>Consultation</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item">Out-Patient</li>
-          <li class="breadcrumb-item active">Triage</li>
+          <li class="breadcrumb-item active">Consultation</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -208,7 +208,7 @@
 	
 	          <div class="card">
 	            <div class="card-body">
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">New Triage</button>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">New Consultation</button>
 					
 	              <!-- Table with stripped rows -->
 	              <table class="table datatable">
@@ -216,30 +216,32 @@
 	                  <tr>
 						<th> </th>
 	                    <th>
-	                      <b>A</b>ppointment No.
+	                      <b>C</b>onsultation No.
 	                    </th>
-	                    <th>Symptoms</th>
-	                    <th>Vitals</th>
-						<!--<th>Age</th>
-						<th>Address</th>-->
+						<th>Appointment No.</th>
+	                    <th>Medical History</th>
+	                    <th>Doctor Notes</th>
+						<th>Diagnosis</th>
+						<th>Lab Tests</th>
 	                    <!--<th data-type="date" data-format="YYYY/DD/MM">Start Date</th>-->
-	                    <!--<th>Next of Kin</th>-->
+	                    <th>Prescriptions</th>
 	                  </tr>
 	                </thead>
 	                <tbody>
-	                  <tr th:each="triage:${triages}">
+	                  <tr th:each="doctorConsultation:${doctorConsultations}">
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic outlined example">
-				                <a th:href="@{/triage/delete(consultationid=${triage.consultationid})}" class="btn btn-outline-primary" id="deleteButton"><i class="bi bi-trash"></i></a>
+				                <a th:href="@{/consultations/delete(consultationid=${doctorConsultation.consultationid})}" class="btn btn-outline-primary" id="deleteButton"><i class="bi bi-trash"></i></a>
 								<!--<a th:href="@{/patients/findById(patientno=${patient.patientno})}" class="btn btn-outline-primary" id="editButton"><i class="icon_pencil-edit"></i></a>-->
 				             </div>
 						</td>
-	                    <td th:text="${triage.appointmentid}"></td>
-	                    <td th:text="${triage.symptoms}"></td>
-	                    <td th:text="${triage.vitals}"></td>
-	                    <!--<td th:text="${patient.age}"></td>
-	                    <td th:text="${patient.address}"></td>
-						<td th:text="${patient.nok}"></td>-->
+						<td th:text="${doctorConsultation.consultationid}"></td>
+	                    <td th:text="${doctorConsultation.appointmentid}"></td>
+	                    <td th:text="${doctorConsultation.medicalHistory}"></td>
+	                    <td th:text="${doctorConsultation.doctorNotes}"></td>
+						<td th:text="${doctorConsultation.diagnosis}"></td>
+						<td th:text="${doctorConsultation.labTests}"></td>
+						<td th:text="${doctorConsultation.prescriptions}"></td>
 	                  </tr>
 		  			</tbody>
 		           </table>
@@ -274,7 +276,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addModalLabel">Patient Triage</h5>
+          <h5 class="modal-title" id="addModalLabel">Consultation View</h5>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -290,7 +292,7 @@
 					  		th:value="${appointment.appointmentid}"
 							th:text="${appointment.appointmentid} + ': Patient no.' + ${appointment.patientno}"></option>
 	                </select>
-	                <label for="selectAppointmentNumber">Appointment Number</label>
+	                <label for="selectAppointmentNumber">Appointment</label>
 	              </div>
 	            </div>
 				<div class="col-md-6">
@@ -307,17 +309,35 @@
 	            </div>
 	            <div class="col-12">
 	              <div class="form-floating">
-	                <textarea class="form-control" placeholder="Symptoms" id="symptoms" style="height: 100px;" name="symptoms"></textarea>
-	                <label for="symptoms">Symptoms</label>
+	                <textarea class="form-control" placeholder="Medical History" id="medicalHistory" style="height: 100px;" name="medicalHistory"></textarea>
+	                <label for="medicalHistory">Medical History</label>
+	              </div>
+	            </div>
+				<div class="col-12">
+	              <div class="form-floating">
+	                <textarea class="form-control" placeholder="Doctor Notes" id="doctorNotes" style="height: 100px;" name="doctorNotes"></textarea>
+	                <label for="doctorNotes">Doctor Notes</label>
 	              </div>
 	            </div>
 				<div class="col-md-12">
 	              <div class="form-floating">
-	                <input type="text" class="form-control" id="vitals" placeholder="Vitals" name="vitals">
-	                <label for="vitals">Vitals</label>
+	                <input type="text" class="form-control" id="diagnosis" placeholder="Diagnosis" name="diagnosis">
+	                <label for="diagnosis">Diagnosis</label>
 	              </div>
 	            </div>
-				<div class="col-md-6">
+				<div class="col-md-12">
+	              <div class="form-floating">
+	                <input type="text" class="form-control" id="tests" placeholder="Lab Tests" name="labTests">
+	                <label for="tests">Lab Tests</label>
+	              </div>
+	            </div>
+				<div class="col-md-12">
+	              <div class="form-floating">
+	                <input type="text" class="form-control" id="prescriptions" placeholder="Prescriptions" name="prescriptions">
+	                <label for="prescriptions">Prescriptions</label>
+	              </div>
+	            </div>
+				<div class="col-md-4">
 	              <div class="form-floating mb-3">
 	                <select class="form-select" id="selectStatus" aria-label="Status" name="status">
 	                  <option selected> </option>
@@ -327,15 +347,21 @@
 	                <label for="selectStatus">Status</label>
 	              </div>
 	            </div>
-	            <div class="col-md-6">
+				<div class="col-md-4">
+	              <div class="form-floating">
+	                <input type="number" class="form-control" id="consultationFee" placeholder="Consultation Fee" name="consultationfee">
+	                <label for="consultationFee">Consultation Fee</label>
+	              </div>
+	            </div>
+	            <div class="col-md-4">
 				<div class="form-floating mb-3">
-	                <select class="form-select" id="selectNurseNumber" aria-label="Nurse" name="personnelid">
+	                <select class="form-select" id="selectNurseNumber" aria-label="Doctor" name="personnelid">
 	                  <option selected> </option>
 	                  <option th:each="medicalStaff: ${medicalStaffs}"
 					  		th:value="${medicalStaff.personnelid}"
 							th:text="${medicalStaff.personnelName}"></option>
 	                </select>
-	                <label for="selectNurseNumber">Nurse</label>
+	                <label for="selectNurseNumber">Doctor</label>
 	              </div>
 	            </div>
 	            <div class="text-center">

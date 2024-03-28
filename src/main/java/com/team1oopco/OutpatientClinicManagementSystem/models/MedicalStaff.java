@@ -21,21 +21,13 @@ public class MedicalStaff extends Personnel {
 	private String specialization;
 	private String licenseNO;
 	
-	/*@OneToMany(mappedBy="medicalstaff")
-	private List<DoctorConsultation> doctorconsultations;
-	
-	@OneToMany(mappedBy="medicalstaff")
-	private List<Pharmacy> pharmacies;*/
-	
 	public MedicalStaff(int personnelid, String personnelName, String address, int telephone, String specialization,
 			String licenseNO) {
 		this.specialization = specialization;
 		this.licenseNO = licenseNO;
-		/*this.doctorconsultations = doctorconsultations;
-		this.pharmacies = pharmacies;*/
 	}
 
-	public MedicalStaff(int personnelid, String personnelName, String address, int telephone) {
+	public MedicalStaff() {
 	}
 
 	public String getSpecialization() {
