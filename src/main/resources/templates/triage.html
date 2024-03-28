@@ -126,7 +126,7 @@
           </li>
           <li>
             <a th:href="@{/pharmacy}">
-              <i class="bi bi-circle"></i><span>Fulfilled Prescriptions</span>
+              <i class="bi bi-circle"></i><span>Prescriptions</span>
             </a>
           </li>
         </ul>
@@ -144,7 +144,7 @@
           </li>
           <li>
             <a th:href="@{/laboratory}">
-              <i class="bi bi-circle"></i><span>Fulfilled Tests</span>
+              <i class="bi bi-circle"></i><span>Lab Tests</span>
             </a>
           </li>
         </ul>
@@ -333,7 +333,7 @@
 	                  <option selected> </option>
 	                  <option th:each="medicalStaff: ${medicalStaffs}"
 					  		th:value="${medicalStaff.personnelid}"
-							th:text="${medicalStaff.personnelName}"></option>
+							th:text="${medicalStaff.specialization} + ':' + ${medicalStaff.personnelName}"></option>
 	                </select>
 	                <label for="selectNurseNumber">Nurse</label>
 	              </div>
