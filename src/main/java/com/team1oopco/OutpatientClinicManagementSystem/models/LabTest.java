@@ -32,7 +32,7 @@ public class LabTest {
 	public String testName;
 	private String sample;
 	private String results;
-	private Float testprice;
+	public Float testprice;
 	private String status;
 	
 	@ManyToOne

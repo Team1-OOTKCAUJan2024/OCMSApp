@@ -20,11 +20,6 @@ public class AppointmentService {
 		return appointmentRepository.findAll();
 	}
 	
-	//returning ddl of appointments. Add query to filter today's appointments only
-	/*public List<Appointment> ddlAppointments(){
-			return appointmentRepository.findAll();
-		}*/
-	
 	//saving new appointment data
 	public void save(Appointment appointment) {
 		appointmentRepository.save(appointment);

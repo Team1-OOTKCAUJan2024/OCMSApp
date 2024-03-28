@@ -28,7 +28,7 @@ public class Billing {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer invoiceno;
 	private String invoiceDate;
-	private int amount;
+	private Integer totalAmount;
     private String status;
     
     @ManyToOne
@@ -45,24 +45,27 @@ public class Billing {
     @JoinColumn(name="consultationid", insertable=false, updatable=false)
     private DoctorConsultation doctorConsultation;
     private Integer consultationid;
+    private Integer consultationfee;
     
-    @OneToMany
+    @OneToOne
     @JoinColumn(name="prescriptionid", insertable=false, updatable=false)
     private Prescription prescription;
     private Integer prescriptionid;
+    private Integer prescriptionamount;
     
-    @OneToMany
+    @OneToOne
     @JoinColumn(name="labtestno", insertable=false, updatable=false)
-    private LabTest labTest;
+    private LabTest labtest;
     private Integer labtestno;
+    private Integer labtestprice;
     
-	public Billing(Integer invoiceno, String invoiceDate, int amount, String status, AdminStaff adminstaff,
+	public Billing(Integer invoiceno, String invoiceDate, Integer totalAmount, String status, AdminStaff adminstaff,
 			Integer personnelid, Patient patient, Integer patientno, DoctorConsultation doctorConsultation,
-			Integer consultationid, Prescription prescription, Integer prescriptionid, LabTest labTest,
-			Integer labtestno) {
+			Integer consultationid, Integer consultationfee, Prescription prescription, Integer prescriptionid, Integer prescriptionamount, LabTest labtest,
+			Integer labtestno, Integer labtestprice) {
 		this.invoiceno = invoiceno;
 		this.invoiceDate = invoiceDate;
-		this.amount = amount;
+		this.totalAmount = totalAmount;
 		this.status = status;
 		this.adminstaff = adminstaff;
 		this.personnelid = personnelid;
@@ -70,10 +73,13 @@ public class Billing {
 		this.patientno = patientno;
 		this.doctorConsultation = doctorConsultation;
 		this.consultationid = consultationid;
+		this.consultationfee = consultationfee;
 		this.prescription = prescription;
 		this.prescriptionid = prescriptionid;
-		this.labTest = labTest;
+		this.prescriptionamount = prescriptionamount;
+		this.labtest = labtest;
 		this.labtestno = labtestno;
+		this.labtestprice = labtestprice;
 	}
 
 	public Billing() {
@@ -95,12 +101,12 @@ public class Billing {
 		this.invoiceDate = invoiceDate;
 	}
 
-	public int getAmount() {
-		return amount;
+	public int getTotalAmount() {
+		return totalAmount;
 	}
 
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setTotalAmount(Integer totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
 	public String getStatus() {
@@ -150,13 +156,21 @@ public class Billing {
 	public void setDoctorConsultation(DoctorConsultation doctorConsultation) {
 		this.doctorConsultation = doctorConsultation;
 	}
-
-	public Integer getConsultationid() {
+	
+	public Integer getConsultationId() {
 		return consultationid;
 	}
-
-	public void setConsultationid(Integer consultationid) {
+	
+	public void setConsultationId(Integer consultationid) {
 		this.consultationid = consultationid;
+	}
+
+	public Integer getConsultationFee() {
+		return consultationfee;
+	}
+
+	public void setConsultationFee(Integer consultationfee) {
+		this.consultationfee = consultationfee;
 	}
 
 	public Prescription getPrescription() {
@@ -166,37 +180,53 @@ public class Billing {
 	public void setPrescription(Prescription prescription) {
 		this.prescription = prescription;
 	}
-
-	public Integer getPrescriptionid() {
+	
+	public Integer getPrescriptionId() {
 		return prescriptionid;
 	}
-
-	public void setPrescriptionid(Integer prescriptionid) {
+	
+	public void setPrescriptionId(Integer prescriptionid) {
 		this.prescriptionid = prescriptionid;
 	}
 
+	public Integer getPrescriptionAmount() {
+		return prescriptionamount;
+	}
+
+	public void setPrescriptionAmount(Integer prescriptionamount) {
+		this.prescriptionamount = prescriptionamount;
+	}
+
 	public LabTest getLabTest() {
-		return labTest;
+		return labtest;
 	}
 
-	public void setLabTest(LabTest labTest) {
-		this.labTest = labTest;
+	public void setLabTest(LabTest labtest) {
+		this.labtest = labtest;
 	}
-
-	public Integer getLabtestno() {
+	
+	public Integer getLabTestno() {
 		return labtestno;
 	}
-
-	public void setLabtestno(Integer labtestno) {
+	
+	public void setLabTestno(Integer labtestno) {
 		this.labtestno = labtestno;
+	}
+
+	public Integer getLabTestPrice() {
+		return labtestprice;
+	}
+
+	public void setLabtestno(Integer labtestprice) {
+		this.labtestprice = labtestprice;
 	}
 
 	@Override
 	public String toString() {
-		return "Billing [invoiceno=" + invoiceno + ", invoiceDate=" + invoiceDate + ", amount=" + amount + ", status="
+		return "Billing [invoiceno=" + invoiceno + ", invoiceDate=" + invoiceDate + ", totalAmount=" + totalAmount + ", status="
 				+ status + ", adminstaff=" + adminstaff + ", personnelid=" + personnelid + ", patient=" + patient
-				+ ", patientno=" + patientno + ", doctorConsultation=" + doctorConsultation + ", consultationid="
-				+ consultationid + ", prescription=" + prescription + ", prescriptionid=" + prescriptionid
-				+ ", labTest=" + labTest + ", labtestno=" + labtestno + "]";
+				+ ", patientno=" + patientno + ", doctorConsultation=" + doctorConsultation + ", consultationid=" + consultationid + ", consultationfee="
+				+ consultationfee + ", prescription=" + prescription + ", prescriptionid=" + prescriptionid + ", prescriptionamount=" + prescriptionamount
+				+ ", labtest=" + labtest + ", labtestno=" + labtestno + ", labtestprice=" + labtestprice + "]";
 	}
 }
